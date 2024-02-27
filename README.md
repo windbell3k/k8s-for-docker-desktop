@@ -2,12 +2,26 @@
 
 中文 | [English](README_en.md)
 
+
+欢迎体验阿里云容器服务 Kubernetes Serverless版 （ASK）免费试用计划
+, 开启云上云原生实践之旅。
+https://free.aliyun.com/?product=9596839
+
+
 说明: 
 
 * 需安装 Docker Desktop 的 Mac 或者 Windows 版本，如果没有请下载[下载 Docker CE最新版本](https://store.docker.com/search?type=edition&offering=community)
-* 当前 master 分支已经在 Docker for Mac/Windows 4.8.0 (包含 Docker CE 20.10.14 和 Kubernetes 1.24.0) 版本测试通过
+* 当前 master 分支已经在 Docker for Mac/Windows 4.27.0 (包含 Docker 25.0.1 和 Kubernetes v1.29.1) 版本测试通过
 * 如果需要测试其他版本，请查看 Docker Desktop版本，Docker -> About Docker Desktop
   ![about](images/about.png)
+  * 如Kubernetes版本为 v1.29.1, 请使用下面命令切换 [v1.29.1 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.29.1) ```git checkout v1.29.1```
+  * 如Kubernetes版本为 v1.28.2, 请使用下面命令切换 [v1.28.2 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.28.2) ```git checkout v1.28.2```
+  * 如Kubernetes版本为 v1.27.2, 请使用下面命令切换 [v1.27.2 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.27.2) ```git checkout v1.27.2```
+  * 如Kubernetes版本为 v1.25.9, 请使用下面命令切换 [v1.25.9 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.25.9) ```git checkout v1.25.9```
+  * 如Kubernetes版本为 v1.25.4, 请使用下面命令切换 [v1.25.4 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.25.4) ```git checkout v1.25.4```
+  * 如Kubernetes版本为 v1.25.2, 请使用下面命令切换 [v1.25.2 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.25.2) ```git checkout v1.25.2```
+  * 如Kubernetes版本为 v1.25.0, 请使用下面命令切换 [v1.25.0 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.25.0) ```git checkout v1.25.0```
+  * 如Kubernetes版本为 v1.24.2, 请使用下面命令切换 [v1.24.2 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.24.2) ```git checkout v1.24.2```
   * 如Kubernetes版本为 v1.24.0, 请使用下面命令切换 [v1.24.0 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.24.0) ```git checkout v1.24.0```
   * 如Kubernetes版本为 v1.23.4, 请使用下面命令切换 [v1.23.4 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.23.4) ```git checkout v1.23.4```
   * 如Kubernetes版本为 v1.22.5, 请使用下面命令切换 [v1.22.5 分支](https://github.com/AliyunContainerService/k8s-for-docker-desktop/tree/v1.22.5) ```git checkout v1.22.5```
@@ -95,6 +109,25 @@ pred='process matches ".*(ocker|vpnkit).*"
   * 在macOS上面，执行 ```rm -fr '~/Library/Group\ Containers/group.com.docker/pki'```
   * 在Windows上面删除 'C:\ProgramData\DockerDesktop\pki' 目录 和 'C:\Users\yourUserName\AppData\Local\Docker\pki' 目录
 * [Issue 1962(comment)](https://github.com/docker/for-win/issues/1962#issuecomment-431091114)
+
+
+
+**K8S进入容器方法**
+
+K8s如何进入一个pod里有多个容器的方法
+
+```
+kubectl --namespace=kube-system exec -it kube-dns-1336009800-15b1h --container nginx -- sh
+```
+
+或
+
+```
+kubectl --namespace=kube-system exec -it kube-dns-1336009800-15b1h  -c  nginx -- sh
+```
+
+注释：--namespace 为命名空间kube-dns为pod的名字，-c或-container为Pod里其中的一个容器名字
+
 
 ### 配置 Kubernetes
 
@@ -191,20 +224,6 @@ Win: %UserProfile%\.kube\config
 #### 安装 Ingress
 
 [源地址安装说明](https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md)
-```
-- 若安装脚本无法安装，可以跳转到该地址查看最新操作
-```
-
-安装
-```shell
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
-```
-
-或
-
-```shell
-kubectl apply -f ingress-nginx-controller.yaml
-```
 
 验证
 
@@ -245,6 +264,12 @@ kubectl delete -f sample/ingress.yaml
 
 ```shell
 kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
+```
+
+或
+
+```shell
+kubectl delete -f ingress-nginx-controller.yaml
 ```
 
 ### 安装 Helm

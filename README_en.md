@@ -4,9 +4,17 @@
 
 NOTE: 
 
-* The master branch is tested with Docker Desktop for Mac/Windows version 4.8.0 (with Docker CE 20.10.14 and Kubernetes 1.24.0). 
+* The master branch is tested with Docker Desktop for Mac/Windows version 4.27.0 (with Docker 25.0.1 and Kubernetes v1.29.1). 
 * If you want to use with other version, pls check version of Kubernetes，Docker -> About Docker Desktop
     ![about](images/about.png)
+    * For Kubernetes v1.29.1, please use the v1.29.1 branch ```git checkout v1.29.1```
+    * For Kubernetes v1.28.2, please use the v1.28.2 branch ```git checkout v1.28.2```
+    * For Kubernetes v1.27.2, please use the v1.27.2 branch ```git checkout v1.27.2```
+    * For Kubernetes v1.25.9, please use the v1.25.9 branch ```git checkout v1.25.9```
+    * For Kubernetes v1.25.4, please use the v1.25.4 branch ```git checkout v1.25.4```
+    * For Kubernetes v1.25.2, please use the v1.25.2 branch ```git checkout v1.25.2```
+    * For Kubernetes v1.25.0, please use the v1.25.0 branch ```git checkout v1.25.0```
+    * For Kubernetes v1.24.2, please use the v1.24.2 branch ```git checkout v1.24.2```
     * For Kubernetes v1.24.0, please use the v1.24.0 branch ```git checkout v1.24.0```
     * For Kubernetes v1.23.4, please use the v1.23.4 branch ```git checkout v1.23.4```
     * For Kubernetes v1.22.5, please use the v1.22.5 branch ```git checkout v1.22.5```
@@ -237,6 +245,12 @@ kubectl delete -f sample/ingress.yaml
 
 ```shell
 kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
+```
+
+Or
+
+```shell
+kubectl delete -f ingress-nginx-controller.yaml
 ```
 
 ### Install Helm
